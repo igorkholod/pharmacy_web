@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результати пошуку</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://kit.fontawesome.com/0aa1058b8e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% include 'pharmacy/navbar.html' %}
+
+    <div class="content-wrap">
+        <h1 id="search_result_title">Результати пошуку за запитом: *пошуковий запит*</h1>
+
+        <div class="drug-pharmacy-main-info search-results-block">
+            <ul>
+                <li>
+                    <img class="drug-pharmacy-info-img" src="{% static 'img/ibuprofen.webp' %}" alt="IBUPROFEN">
+                    <p><span>Форма: </span>таблетки</p>
+                    <p><span>Вага: </span>200мг</p>
+                    <p><a href="{% url 'drug_info' %}">Інформація</a></p>
+                    <p><a href="{% url 'pharmacy_result' %}">Знайти в аптеках</a></p>
+                </li>
+                <hr>
+                <li>
+                    <img class="drug-pharmacy-info-img" src="{% static 'img/ibuprofen.webp' %}" alt="IBUPROFEN">
+                    <p><span>Форма: </span>таблетки</p>
+                    <p><span>Вага: </span>200мг</p>
+                    <p><a href="{% url 'drug_info' %}">Інформація</a></p>
+                    <p><a href="{% url 'pharmacy_result' %}">Знайти в аптеках</a></p>
+                </li>
+                <hr>
+                <li>
+                    <img class="drug-pharmacy-info-img" src="{% static 'img/ibuprofen.webp' %}" alt="IBUPROFEN">
+                    <p><span>Форма: </span>таблетки</p>
+                    <p><span>Вага: </span>200мг</p>
+                    <p><a href="{% url 'drug_info' %}">Інформація</a></p>
+                    <p><a href="{% url 'pharmacy_result' %}">Знайти в аптеках</a></p>
+                </li>
+                <hr>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
