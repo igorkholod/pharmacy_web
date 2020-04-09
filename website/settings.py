@@ -25,7 +25,7 @@ SECRET_KEY = '9(ns2)t(s$rmxt(u8rn=+br0@5d#16p9fv5lvf%qpn4+&lynvg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['igorkholod.pythonanywhere.com']
 
 
 # Application definition
