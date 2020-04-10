@@ -33,10 +33,19 @@ class Manufacturer(models.Model):
 
 class Drug(models.Model):
     name = models.CharField(max_length=100, default="")
-    manufacturer = models.ForeignKey('Manufacturer', on_delete=models.CASCADE, related_name='manufacturer_drugs')
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, related_name='manufacturer_drugs')
     license = models.CharField(max_length=50, default="")
-    description = models.OneToOneField('Description', on_delete=models.DO_NOTHING, related_name='description_drugs')
-    pharmacy = models.ManyToManyField('Pharmacy', related_name='pharmacy_drugs')
+    description = models.OneToOneField(Description, on_delete=models.DO_NOTHING, related_name='description_drugs')
+    pharmacy = models.ManyToManyField(Pharmacy, through='DrugPharmacy', related_name='pharmacy_drugs')
 
     def __str__(self):
         return self.name
+
+
+class DrugPharmacy(models.Model):
+    drug = models.ForeignKey(Drug, on_delete=models.CASCADE, related_name='drug_stocks')
+    pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE, related_name='pharmacy_stocks')
+    amount = models.IntegerField()
+
+    def __str__(self):
+        return self.drug.name + " in " + self.pharmacy.name + ". Amount: " + str(self.amount)
