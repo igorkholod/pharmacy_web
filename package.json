@@ -1,0 +1,25 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "WebDevelopment Lab",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint **/*.js --ignore-pattern node_modules/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorkholod/pharmacy_web.git"
+  },
+  "author": "Ihor Kholod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorkholod/pharmacy_web/issues"
+  },
+  "homepage": "https://github.com/igorkholod/pharmacy_web#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}

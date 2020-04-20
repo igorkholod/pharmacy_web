@@ -1,16 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="{% static 'scripts/ajax.js' %}"></script>
 </head>
 <body>
 <nav>
-        <a class="left" href="{% url 'main_page' %}">ГОЛОВНА</a>
-        <a class="right" href="{% url 'about' %}">ПРО НАС</a>
-        <a class="left" id="search_mobile" href="{% url 'main_page' %}">ПОШУК</a>
+        <a class="left" href="{% url 'main_page' %}">MAIN</a>
+        <a class="right" href="{% url 'about' %}">ABOUT</a>
+        <a class="left" id="search_mobile" href="{% url 'main_page' %}">SEARCH</a>
         <div class="search-container">
-            <form action="{% url 'search_result' %}">
-                <input type="text" placeholder="Знайти ліки..." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
+            <form name = "search_form" action="{% url 'search_result' %}" onsubmit="return validateForm()"
+                      method="post">
+                {% csrf_token %}
+                <input id="search_field" type="text" name="search_term" placeholder="Search...">
+                <button name="help" type="submit" value="search_term"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </nav>

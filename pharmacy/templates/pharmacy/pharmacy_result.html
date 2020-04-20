@@ -5,42 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ліки в аптеках</title>
-    <link rel="stylesheet" href=".{% static 'css/styles.css' %}">
+    <title>Drugs in pharmacies</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://kit.fontawesome.com/0aa1058b8e.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="renderPharmacySearchResult('../../api/search_pharmacy/{{ id }}')">
     {% include 'pharmacy/navbar.html' %}
 
     <div class="content-wrap">
-        <h1>*Ліки* можна купити в таких аптеках</h1>
+        <h1 id=>This drug you can find here:</h1>
 
-        <div class="drug-pharmacy-main-info search-results-block">
-            <ul>
-                <li>
-                    <img class="drug-pharmacy-info-img" src="{% static 'img/no_image.webp' %}" alt="ZNAKHAR">
-                    <p>Аптеха "Знахар"</p>
-                    <p>Адреса: *******</p>
-                    <p>Ціна: 100грн</p>
-                    <p>На складі: 15</p>
-                </li>
-                <hr>
-                <li>
-                    <img class="drug-pharmacy-info-img" src="{% static 'img/no_image.webp' %}" alt="ZNAKHAR">
-                    <p>Аптеха "Знахар"</p>
-                    <p>Адреса: *******</p>
-                    <p>Ціна: 100грн</p>
-                    <p>На складі: 15</p>
-                </li>
-                <hr>
-                <li>
-                    <img class="drug-pharmacy-info-img" src="{% static 'img/no_image.webp' %}" alt="ZNAKHAR">
-                    <p>Аптеха "Знахар"</p>
-                    <p>Адреса: *******</p>
-                    <p>Ціна: 100грн</p>
-                    <p>На складі: 15</p>
-                </li>
-                <hr>
+        <div id="main_div" class="drug-pharmacy-main-info search-results-block">
+            <ul id="pharmacy_list">
             </ul>
         </div>
     </div>

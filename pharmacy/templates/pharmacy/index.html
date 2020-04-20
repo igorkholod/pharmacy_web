@@ -1,30 +1,29 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Довідник ліків</title>
+    <title>Drug helper</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://kit.fontawesome.com/0aa1058b8e.js" crossorigin="anonymous"></script>
+    <script src="{% static 'scripts/ajax.js' %}"></script>
 </head>
 
 <body>
     <div>
         <div class="welcome-container">
             <div>
-                <p>Вітаємо.</p>
-                <span>Будь ласка, вкажіть назву ліків у полі внизу.</span>
-                <form action="{% url 'search_result' %}">
-                    <input type="text" placeholder="Тутя">
-                    <button type="submit"></button>
+                <p>Welcome.</p>
+                <span>Please, provide a drug name in the field below.</span>
+                <form name = "search_form" action="{% url 'search_result' %}" onsubmit="return validateForm()"
+                      method="post">
+                    {% csrf_token %}
+                    <input id="search_field" type="text" name="search_term" placeholder="Here">
+                    <button name= help" type="submit" value="search_term"></button>
                 </form>
-
-                <!--            to be removed-->
-                <p style="font-size: 10px">Пошук ще не працює, просто нажміть кнопку :)</p>
-                <!--            --------------->
             </div>
         </div>
     </div>

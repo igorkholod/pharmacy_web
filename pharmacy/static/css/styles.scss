@@ -93,6 +93,7 @@ nav {
       padding: 5px 0 5px 5px;
       //float: left;
       border: none;
+      transition: background-color 1s;
     }
   }
 }
@@ -130,6 +131,7 @@ nav {
       outline: none;
       background: #F9F0DA;
       color: #9E9C9C;
+      transition: background-color 1s;
     }
 
     button {

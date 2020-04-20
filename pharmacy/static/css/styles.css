@@ -76,6 +76,7 @@ nav .search-container input[type=text] {
   font-size: 18px;
   padding: 5px 0 5px 5px;
   border: none;
+  transition: background-color 1s;
 }
 
 .welcome-container {
@@ -111,6 +112,7 @@ nav .search-container input[type=text] {
   outline: none;
   background: #F9F0DA;
   color: #9E9C9C;
+  transition: background-color 1s;
 }
 .welcome-container form button {
   position: absolute;
