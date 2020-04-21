@@ -21,7 +21,7 @@
                 <form name = "search_form" action="{% url 'search_result' %}" onsubmit="return validateForm()"
                       method="post">
                     {% csrf_token %}
-                    <input id="search_field" type="text" name="search_term" placeholder="Here">
+                    <input id="search_field" type="text" name="search_term" placeholder="Here, e.g. 'drug'">
                     <button name= help" type="submit" value="search_term"></button>
                 </form>
             </div>
