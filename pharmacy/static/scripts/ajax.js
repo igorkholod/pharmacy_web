@@ -1,3 +1,4 @@
+// перевірка поля вводу
 function validateForm() {
     const x = document.forms.search_form.search_term.value;
     if (x === '') {
@@ -13,6 +14,7 @@ function validateForm() {
     return true;
 }
 
+// ajax запит за url
 function ajaxGet(url, callback) {
     let data;
     const xmlhttp = new XMLHttpRequest();
@@ -31,6 +33,33 @@ function ajaxGet(url, callback) {
     xmlhttp.send();
 }
 
+// результат пошуку
+function renderSearchResult(url) {
+    ajaxGet(url, (data) => {
+        if (Object.prototype.hasOwnProperty.call(data, 'Error')) {
+            if (data.Error === 'NOT_FOUND') {
+                document.getElementById('main_div').innerHTML = "<p>Sorry, we couldn't find anything with "
+                    + 'this name.';
+                return;
+            }
+        }
+        const splitUrl = url.toString().split('/');
+        document.getElementById('search_result_title').innerText = `Results wih term: ${
+            splitUrl[splitUrl.length - 1]}`;
+        let html = '';
+        data.forEach((item) => {
+            html += `<li><img class="drug-pharmacy-info-img" src="${item.image}" alt="${
+                item.name}">`
+            + `<p><span>Name: </span>${item.name}</p>`
+            + `<p><span>Weight: </span>${item.description.weight}</p>`
+            + `<p><a href="../drug/${item.id}">Information</a></p>`
+            + `<p><a href="../pharmacy_result/${item.id}">Find in pharmacies</a></p></li><hr>`;
+        });
+        document.getElementById('list').innerHTML = html;
+    });
+}
+
+// інформація про ліки
 function renderDrug(url) {
     ajaxGet(url, (data) => {
         if (Object.prototype.hasOwnProperty.call(data, 'Error')) {
@@ -81,31 +110,7 @@ function renderDrug(url) {
     });
 }
 
-function renderSearchResult(url) {
-    ajaxGet(url, (data) => {
-        if (Object.prototype.hasOwnProperty.call(data, 'Error')) {
-            if (data.Error === 'NOT_FOUND') {
-                document.getElementById('main_div').innerHTML = "<p>Sorry, we couldn't find anything with "
-                    + 'this name.';
-                return;
-            }
-        }
-        const splitUrl = url.toString().split('/');
-        document.getElementById('search_result_title').innerText = `Results wih term: ${
-            splitUrl[splitUrl.length - 1]}`;
-        let html = '';
-        data.forEach((item) => {
-            html += `<li><img class="drug-pharmacy-info-img" src="${item.image}" alt="${
-                item.name}">`
-            + `<p><span>Form: </span>${item.description.dosage_form}</p>`
-            + `<p><span>Weight: </span>${item.description.weight}</p>`
-            + `<p><a href="../drug/${item.id}">Information</a></p>`
-            + `<p><a href="../pharmacy_result/${item.id}">Find in pharmacies</a></p></li><hr>`;
-        });
-        document.getElementById('list').innerHTML = html;
-    });
-}
-
+// результат пошуку за аптеками
 function renderPharmacySearchResult(url) {
     ajaxGet(url, (data) => {
         if (Object.prototype.hasOwnProperty.call(data, 'Error')) {
@@ -122,7 +127,7 @@ function renderPharmacySearchResult(url) {
                 item.name}">`
             + `<p>${item.pharmacy.name}</p>`
             + `<p>Adress: ${item.pharmacy.adress}</p>`
-            + `<p>Price: ${item.price}UAH</p>`
+            + `<p>Price: ${item.price} UAH</p>`
             + `<p>Stock: ${item.amount}</p></li><hr>`;
         });
         document.getElementById('pharmacy_list').innerHTML = html;
